@@ -24,6 +24,7 @@ export default tseslint.config(
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
     },
+    settings: {react: {version: "19.1.0"}},
     rules: {
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
@@ -34,6 +35,7 @@ export default tseslint.config(
         "warn",
         { allowConstantExport: true },
       ],
+      "react/prop-types": 0,
     },
   },
 )
