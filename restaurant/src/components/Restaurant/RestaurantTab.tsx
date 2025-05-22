@@ -1,9 +1,9 @@
 import { useState } from "react";
-import Restaurant from "./Restaurant";
 import { IRestaurantData } from "../../dataModels/IRestaurantData";
+import { Restaurant } from "./Restaurant";
 
 
-function RestaurantTab({restaurants} : {restaurants: Array<IRestaurantData>}){
+export function RestaurantTab({restaurants} : {restaurants: Array<IRestaurantData>}){
     const [activeId, setActiveId] = useState(restaurants[0]?.id);
     const activeRestaurant = restaurants.find(restauran => restauran.id === activeId);
 
@@ -13,15 +13,15 @@ function RestaurantTab({restaurants} : {restaurants: Array<IRestaurantData>}){
                 {restaurants.map((restaurant) => (
                     <button
                         key={restaurant.id}
+                        disabled={restaurant.id == activeId}
                         onClick={() => setActiveId(restaurant.id)}
                     >
                         {restaurant.name}
                     </button>
                 ))}
             </div>
-            {activeRestaurant && <Restaurant data={activeRestaurant} />}
+            {activeRestaurant && <Restaurant key={activeId} restaurant={activeRestaurant} />}
         </>
     );
 }
 
-export default RestaurantTab;
