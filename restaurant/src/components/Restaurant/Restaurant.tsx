@@ -2,24 +2,24 @@ import type { IRestaurantData } from "../../dataModels/IRestaurantData";
 import Menu from "./Menu";
 import Review from "./Review";
 
-function Restaurant({data} : {data: IRestaurantData}){
+export function Restaurant({restaurant} : {restaurant: IRestaurantData}){
     return(
-        <div style={{marginLeft: "10px"}} key={data.id}>
-            <h2>Название ресторана: {data.name}</h2>
+        <div style={{marginLeft: "10px"}} key={restaurant.id}>
+            <h2>Название ресторана: {restaurant.name}</h2>
             <h3>Меню:</h3>
             {
-                data.menu.map((value) => {
+                restaurant.menu.map((menu) => {
                     return (
-                        <Menu data={value}/>
+                        <Menu key={menu.id} menu={menu}/>
                     )
                 })
             }
 
             <h3>Отзывы:</h3>
             {
-                data.reviews.map((review) => {
+                restaurant.reviews.map((review) => {
                     return (
-                        <Review review={review}/>
+                        <Review key={review.id} review={review}/>
                     )
                 })
             }
@@ -27,4 +27,3 @@ function Restaurant({data} : {data: IRestaurantData}){
     )
 }
 
-export default Restaurant;

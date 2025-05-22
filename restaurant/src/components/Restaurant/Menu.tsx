@@ -1,16 +1,16 @@
 import { IMenu } from "../../dataModels/IRestaurantData";
 import Counter from "../Counter/Counter";
 
-function Menu({data} : {data: IMenu}){
+function Menu({menu} : {menu: IMenu}){
     return (
-        <ul key={data.id}>
-        <li>Название: {data.name}</li>
-        <li>Цена: {data.price}</li>
+        <ul key={menu.id}>
+        <li>Название: {menu.name}</li>
+        <li>Цена: {menu.price}</li>
         <li>Ингридиенты: </li>
         {
-            data.ingredients.map((ingr) => {
+            menu.ingredients.map((ingr, index) => {
                 return (
-                    <ul>
+                    <ul key={index}>
                         <li>{ingr}</li>
                     </ul>
                 )
