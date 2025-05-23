@@ -1,7 +1,12 @@
+import { useEffect } from 'react';
 import { useState } from 'react';
 
 export function useCounter({ min = 0, max = 5, initial = 0 } = {}) {
     const [count, setCount] = useState(initial);
+
+    useEffect(() => {
+        setCount(initial)
+    }, [initial])
 
     const increment = () => setCount(
         (currentCount) => (currentCount < max ? currentCount + 1 : currentCount)
