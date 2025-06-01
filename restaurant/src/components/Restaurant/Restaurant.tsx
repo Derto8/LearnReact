@@ -3,6 +3,7 @@ import type { IRestaurantData } from "../../dataModels/IRestaurantData";
 import { Menu } from "../Menu/Menu";
 import { Review } from "../Review/Review";
 import { ReviewForm } from "../ReviewForm/ReviewForm";
+import styles from './restaurant.module.css';
 
 export function Restaurant({restaurant} : {restaurant: IRestaurantData}){
 
@@ -13,7 +14,7 @@ export function Restaurant({restaurant} : {restaurant: IRestaurantData}){
             <h2>Название ресторана: {restaurant.name}</h2>
             <h3>Меню:</h3>
             {
-                restaurant.menu.length ? <>
+                restaurant.menu.length ? <div className={styles.menuFlex} >
                 {
                     restaurant.menu.map((menu) => {
                         return (
@@ -21,7 +22,7 @@ export function Restaurant({restaurant} : {restaurant: IRestaurantData}){
                         )
                     })
                 }
-                </>
+                </div>
                 : <p>Меню отсутствует</p>
             }
 
