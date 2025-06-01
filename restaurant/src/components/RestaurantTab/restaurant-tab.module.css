@@ -1,0 +1,15 @@
+.restaurantTabMarginBottom10px{
+    margin-bottom: 10px;
+}
+
+.restaurantTabMarginRight10px{
+    margin-right: 10px;
+}
+
+.restaurantTabButtonColor{
+    background: red;
+}
+
+.restaurantTabTextColor{
+    color: white;
+}

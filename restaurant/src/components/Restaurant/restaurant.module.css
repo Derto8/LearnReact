@@ -1,0 +1,4 @@
+.menuFlex{
+    display: flex;
+    flex-wrap: wrap;
+}
