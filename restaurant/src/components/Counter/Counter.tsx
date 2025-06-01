@@ -1,12 +1,9 @@
-import { useEffect } from "react";
 import { useCounter } from "../../hooks/useCounter";
+import { COUNTER_MAX, COUNTER_MIN } from "../../dataModels/env/Env";
 
 function Counter({onHandleCounter, countValue}: {onHandleCounter?: (count: number) => void, countValue?: number}){
     
-    const min = 0;
-    const max = 5;
-    
-    const { count, increment, decrement } = useCounter({ min: min, max: max, initial: countValue != undefined ? countValue : 0 });
+    const { count, increment, decrement } = useCounter({ initial: countValue !== undefined ? countValue : 0 });
 
     function decrementFunc(){
         decrement();
@@ -20,9 +17,9 @@ function Counter({onHandleCounter, countValue}: {onHandleCounter?: (count: numbe
 
     return(
         <div style={{display: "flex", height: "30px"}}>
-            <button onClick={decrementFunc} disabled={count == min} type="button" style={{marginRight: "10px"}}>-</button>
+            <button onClick={decrementFunc} disabled={count == COUNTER_MIN} type="button" style={{marginRight: "10px"}}>-</button>
             <p style={{marginRight: "10px", marginTop: "5px"}}>{count}</p>
-            <button disabled={count == max} onClick={incrementFunc} type="button">+</button>
+            <button disabled={count == COUNTER_MAX} onClick={incrementFunc} type="button">+</button>
         </div>
     )
 }

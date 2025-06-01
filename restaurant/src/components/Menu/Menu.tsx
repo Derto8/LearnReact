@@ -10,10 +10,10 @@ export function Menu({menu} : {menu: IMenu}){
         {
             menu.ingredients.length ? <>
             {
-                menu.ingredients.map((ingr, index) => {
+                menu.ingredients.map((ingredient, index) => {
                     return (
                         <ul key={index}>
-                            <li>{ingr}</li>
+                            <li>{ingredient}</li>
                         </ul>
                     )
                 })

@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { COUNTER_MAX, COUNTER_MIN } from '../dataModels/env/Env';
 
-export function useCounter({ min = 0, max = 5, initial = 0 } = {}) {
+export function useCounter({ min = COUNTER_MIN, max = COUNTER_MAX, initial = 0 } = {}) {
     const [count, setCount] = useState(initial);
 
     useEffect(() => {
