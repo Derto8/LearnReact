@@ -1,6 +1,6 @@
 import { IReview } from "../../dataModels/IRestaurantData";
 
-function Review({review} : {review : IReview}){
+export function Review({review} : {review : IReview}){
     return (
         <ul key={review.id}>
             <li>Пользователь: {review.user}</li>
@@ -9,5 +9,3 @@ function Review({review} : {review : IReview}){
         </ul>
     )
 }
-
-export default Review;

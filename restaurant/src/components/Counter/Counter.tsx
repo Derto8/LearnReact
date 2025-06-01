@@ -1,14 +1,25 @@
 import { useCounter } from "../../hooks/useCounter";
+import { COUNTER_MAX, COUNTER_MIN } from "../../dataModels/env/Env";
 
-function Counter(){
-
-    const { count, increment, decrement } = useCounter({ min: 0, max: 5, initial: 0 });
+function Counter({onHandleCounter, countValue}: {onHandleCounter?: (count: number) => void, countValue?: number}){
     
+    const { count, increment, decrement } = useCounter({ initial: countValue !== undefined ? countValue : 0 });
+
+    function decrementFunc(){
+        decrement();
+        if(onHandleCounter != undefined) onHandleCounter(count - 1)
+    }
+
+    function incrementFunc(){
+        increment();
+        if(onHandleCounter != undefined) onHandleCounter(count + 1)
+    }
+
     return(
         <div style={{display: "flex", height: "30px"}}>
-            <button onClick={decrement} style={{marginRight: "10px"}}>-</button>
+            <button onClick={decrementFunc} disabled={count == COUNTER_MIN} type="button" style={{marginRight: "10px"}}>-</button>
             <p style={{marginRight: "10px", marginTop: "5px"}}>{count}</p>
-            <button onClick={increment}>+</button>
+            <button disabled={count == COUNTER_MAX} onClick={incrementFunc} type="button">+</button>
         </div>
     )
 }
