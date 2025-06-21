@@ -2,8 +2,12 @@ import classNames from "classnames";
 import { IMenu } from "../../dataModels/IRestaurantData";
 import Counter from "../Counter/Counter";
 import styles from './menu.module.css';
+import { useContext } from "react";
+import { AuthContext } from "../Auth/AuthContext";
 
 export function Menu({menu} : {menu: IMenu}){
+    const { auth } = useContext(AuthContext);
+
     return (
         <ul key={menu.id} className={classNames(styles.menuBorder, styles.menuSpacing)}>
             <li>Название: {menu.name}</li>
@@ -22,7 +26,7 @@ export function Menu({menu} : {menu: IMenu}){
                 }
                 </> : <p>Блюдо состоит из воздуха</p>
             }
-            <Counter/>
+            {auth.isAuthorized && <Counter/>}
     </ul>
     )
 }

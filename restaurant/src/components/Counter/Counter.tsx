@@ -2,6 +2,7 @@ import { useCounter } from "../../hooks/useCounter";
 import { COUNTER_MAX, COUNTER_MIN } from "../../dataModels/env/Env";
 import classNames from "classnames";
 import styles from './counter.module.css';
+import { Button } from "../Button/Button";
 
 function Counter({onHandleCounter, countValue}: {onHandleCounter?: (count: number) => void, countValue?: number}){
     
@@ -18,10 +19,11 @@ function Counter({onHandleCounter, countValue}: {onHandleCounter?: (count: numbe
     }
 
     return(
-        <div className={classNames(styles.counterFlex, styles.counterMarginBottom5px)}>
-            <button onClick={decrementFunc} disabled={count == COUNTER_MIN} type="button" className={classNames(styles.counterMarginRight10px)}>-</button>
+        <div 
+        className={classNames(styles.counterFlex, styles.counterMarginBottom5px)}>
+            <Button className={classNames(styles.counterMarginRight10px)} onClick={decrementFunc} disabled={count == COUNTER_MIN}  isSmall={false}><>-</></Button>
             <p className={classNames(styles.counterMarginRight10px, styles.counterMarginTop5px)}>{count}</p>
-            <button disabled={count == COUNTER_MAX} onClick={incrementFunc} type="button">+</button>
+            <Button onClick={incrementFunc} disabled={count == COUNTER_MAX}  isSmall={false}><>+</></Button>
         </div>
     )
 }

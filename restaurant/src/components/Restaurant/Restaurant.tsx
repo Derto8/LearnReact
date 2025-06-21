@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import type { IRestaurantData } from "../../dataModels/IRestaurantData";
 import { Menu } from "../Menu/Menu";
 import { Review } from "../Review/Review";
 import { ReviewForm } from "../ReviewForm/ReviewForm";
 import styles from './restaurant.module.css';
+import { AuthContext } from "../Auth/AuthContext";
 
 export function Restaurant({restaurant} : {restaurant: IRestaurantData}){
 
     const [isAddReview, setIsAddReview] = useState(false);
+    const { auth } = useContext(AuthContext);
+
 
     return(
         <div style={{marginLeft: "10px"}} key={restaurant.id}>
@@ -16,9 +19,9 @@ export function Restaurant({restaurant} : {restaurant: IRestaurantData}){
             {
                 restaurant.menu.length ? <div className={styles.menuFlex} >
                 {
-                    restaurant.menu.map((menu) => {
+                    restaurant.menu.map((menu, index) => {
                         return (
-                            <Menu key={menu.id} menu={menu}/>
+                            <Menu key={index} menu={menu}/>
                         )
                     })
                 }
@@ -39,9 +42,12 @@ export function Restaurant({restaurant} : {restaurant: IRestaurantData}){
                 </> : <p>Отзывы отсутствуют</p>
             }
 
-            <button onClick={() => setIsAddReview(!isAddReview)}>Оставить отзыв</button>
             {
-                isAddReview && <ReviewForm key={restaurant.id}/>
+                auth.isAuthorized && <button onClick={() => setIsAddReview(!isAddReview)}>Оставить отзыв</button>
+            }
+
+            {   
+                auth.isAuthorized && isAddReview && <ReviewForm key={restaurant.id}/>
             }
         </div>
     )
