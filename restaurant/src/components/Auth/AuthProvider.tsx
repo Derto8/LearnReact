@@ -9,7 +9,7 @@ export function AuthProvider({children} : {children: ReactNode}) {
     const toggleAuth = () => {
       console.log(auth)
       setAuth((currAuth) =>
-        currAuth.isAuthorized ? {id: 0, name: "", isAuthorized: false} : {id: 1, name: "Николай", isAuthorized: true}
+        currAuth.isAuthorized ? {isAuthorized: false} : {id: 1, name: "Николай", isAuthorized: true}
       );
     };
   

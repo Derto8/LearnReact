@@ -9,22 +9,20 @@ export function Menu({menu} : {menu: IMenu}){
     const { auth } = useContext(AuthContext);
 
     return (
-        <ul key={menu.id} className={classNames(styles.menuBorder, styles.menuSpacing)}>
+        <ul className={classNames(styles.menuBorder, styles.menuSpacing)}>
             <li>Название: {menu.name}</li>
             <li>Цена: {menu.price}</li>
             <li>Ингридиенты: </li>
             {
-                menu.ingredients.length ? <>
+                menu.ingredients.length ? <ul>
                 {
                     menu.ingredients.map((ingredient, index) => {
                         return (
-                            <ul key={index}>
-                                <li>{ingredient}</li>
-                            </ul>
+                            <li key={index}>{ingredient}</li>
                         )
                     })
                 }
-                </> : <p>Блюдо состоит из воздуха</p>
+                </ul> : <p>Блюдо состоит из воздуха</p>
             }
             {auth.isAuthorized && <Counter/>}
     </ul>

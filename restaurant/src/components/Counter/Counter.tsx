@@ -10,20 +10,20 @@ function Counter({onHandleCounter, countValue}: {onHandleCounter?: (count: numbe
 
     function decrementFunc(){
         decrement();
-        if(onHandleCounter != undefined) onHandleCounter(count - 1)
+        if(onHandleCounter !== undefined) onHandleCounter(count - 1)
     }
 
     function incrementFunc(){
         increment();
-        if(onHandleCounter != undefined) onHandleCounter(count + 1)
+        if(onHandleCounter !== undefined) onHandleCounter(count + 1)
     }
 
     return(
         <div 
         className={classNames(styles.counterFlex, styles.counterMarginBottom5px)}>
-            <Button className={classNames(styles.counterMarginRight10px)} onClick={decrementFunc} disabled={count == COUNTER_MIN}  isSmall={false}><>-</></Button>
+            <Button className={classNames(styles.counterMarginRight10px)} onClick={decrementFunc} disabled={count == COUNTER_MIN}  isSmall={false}>-</Button>
             <p className={classNames(styles.counterMarginRight10px, styles.counterMarginTop5px)}>{count}</p>
-            <Button onClick={incrementFunc} disabled={count == COUNTER_MAX}  isSmall={false}><>+</></Button>
+            <Button onClick={incrementFunc} disabled={count == COUNTER_MAX}  isSmall={false}>+</Button>
         </div>
     )
 }

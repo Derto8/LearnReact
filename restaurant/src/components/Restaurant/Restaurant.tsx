@@ -47,7 +47,7 @@ export function Restaurant({restaurant} : {restaurant: IRestaurantData}){
             }
 
             {   
-                auth.isAuthorized && isAddReview && <ReviewForm key={restaurant.id}/>
+                auth.isAuthorized && isAddReview && <ReviewForm/>
             }
         </div>
     )
