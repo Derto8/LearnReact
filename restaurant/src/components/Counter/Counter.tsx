@@ -1,14 +1,29 @@
 import { useCounter } from "../../hooks/useCounter";
+import { COUNTER_MAX, COUNTER_MIN } from "../../dataModels/env/Env";
+import classNames from "classnames";
+import styles from './counter.module.css';
+import { Button } from "../Button/Button";
 
-function Counter(){
-
-    const { count, increment, decrement } = useCounter({ min: 0, max: 5, initial: 0 });
+function Counter({onHandleCounter, countValue}: {onHandleCounter?: (count: number) => void, countValue?: number}){
     
+    const { count, increment, decrement } = useCounter({ initial: countValue !== undefined ? countValue : 0 });
+
+    function decrementFunc(){
+        decrement();
+        if(onHandleCounter !== undefined) onHandleCounter(count - 1)
+    }
+
+    function incrementFunc(){
+        increment();
+        if(onHandleCounter !== undefined) onHandleCounter(count + 1)
+    }
+
     return(
-        <div style={{display: "flex", height: "30px"}}>
-            <button onClick={decrement} style={{marginRight: "10px"}}>-</button>
-            <p style={{marginRight: "10px", marginTop: "5px"}}>{count}</p>
-            <button onClick={increment}>+</button>
+        <div 
+        className={classNames(styles.counterFlex, styles.counterMarginBottom5px)}>
+            <Button className={classNames(styles.counterMarginRight10px)} onClick={decrementFunc} disabled={count == COUNTER_MIN}  isSmall={false}>-</Button>
+            <p className={classNames(styles.counterMarginRight10px, styles.counterMarginTop5px)}>{count}</p>
+            <Button onClick={incrementFunc} disabled={count == COUNTER_MAX}  isSmall={false}>+</Button>
         </div>
     )
 }

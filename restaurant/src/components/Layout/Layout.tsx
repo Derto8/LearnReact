@@ -1,13 +1,13 @@
 import { ReactNode } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
+import { Header } from "../Header/Header";
+import { Footer } from "../Footer/Footer";
+import { ProgressBar } from "../ProgressBar/ProgressBar";
 
-function Layout({children} : {children: ReactNode}){
+export function Layout({children} : {children: ReactNode}){
     return <>
         <Header/>
         {children}
         <Footer/>
+        <ProgressBar/>
     </>
 }
-
-export default Layout;

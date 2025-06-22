@@ -1,0 +1,16 @@
+.counterFlex{
+    display: flex;
+    height: 30px;
+}
+
+.counterMarginRight10px{
+    margin-right: 10px;
+}
+
+.counterMarginTop5px{
+    margin-top: 5px;
+}
+
+.counterMarginBottom5px{
+    margin-bottom: 5px;
+}

@@ -1,0 +1,8 @@
+.menuBorder {
+    border: 1px solid black;
+}
+
+.menuSpacing{
+    margin: 5px;
+    padding-right: 15px;
+}
